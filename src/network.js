@@ -60,6 +60,10 @@ Network.prototype = {
     }
   },
 
+  getErrors: function () {
+    return this.layers.input.getErrors();
+  },
+
   // project a connection to another unit (either a network or a layer)
   project: function(unit, type, weights) {
 

@@ -14,6 +14,7 @@ function Layer(size, label) {
   this.list = [];
   this.label = label || null;
   this.connectedTo = [];
+  this.error = [];
 
   while (size--) {
     var neuron = new Neuron();
@@ -64,6 +65,12 @@ Layer.prototype = {
         neuron.propagate(rate);
       }
     }
+  },
+
+  getErrors: function () {
+    return this.neurons().map(function (neuron) {
+      return neuron.error.projected;
+    });
   },
 
   // projects a connection from this layer to another one
